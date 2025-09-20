@@ -55,26 +55,27 @@ public class Elves
         Items.Remove(item);
     }
     
-    public void GetDamaged(int damage)
-    {
-        Health -= damage;
-    }
-    
     public void AttackElves(Elves elf)
     {
-        int attack = GetAttack();
-        elf.GetDamaged(attack);
+        if ((GetAttack() - elf.GetDefense()) >= 0)
+        {
+            elf.Health = target.Health - (GetAttack() - elf.GetDefense());
+        }
     }
     
     public void AttackDwarves(Dwarves dwarf)
     {
-        int attack = GetAttack();
-        dwarf.GetDamaged(attack);
+        if ((GetAttack() - dwarf.GetDefense()) >= 0)
+        {
+            dwarf.Health = dwarf.Health - (GetAttack() - dwarf.GetDefense());
+        }
     }
     
     public void AttackWizards(Wizards wizard)
     {
-        int attack = GetAttack();
-        wizard.GetDamaged(attack);
+        if ((GetAttack() - wizard.GetDefense()) >= 0)
+        {
+            wizard.Health = wizard.Health - (GetAttack() - wizard.GetDefense());
+        }
     }
 }
