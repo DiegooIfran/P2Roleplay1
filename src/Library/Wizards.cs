@@ -2,8 +2,8 @@ namespace Library;
 public class Wizards
 {
     private string Name { get; }
-    private List<item> Items = [];
-    private spellBook SpellBook = null;
+    private List<Item> Items = [];
+    private SpellBook SpellBook = null;
     private int BaseHealth {get;}
     public int Health { set; get; }
 
@@ -14,12 +14,12 @@ public class Wizards
         this.BaseHealth = baseHealth;
     }
 
-    private void AddItem(item objeto)
+    private void AddItem(Item objeto)
     {
         Items.Add(objeto);
     }
 
-    private void RemoveItem(item objeto)
+    private void RemoveItem(Item objeto)
     {
         Items.Remove(objeto);
     }
@@ -27,7 +27,7 @@ public class Wizards
     private int GetAttack()
     {
         int attack = 0;
-        foreach (item objeto in Items)
+        foreach (Item objeto in Items)
         {
             attack += objeto.Attack;
         }
@@ -38,7 +38,7 @@ public class Wizards
     public int GetDefense()
     {
         int defense = 0;
-        foreach (item objeto in Items)
+        foreach (Item objeto in Items)
         {
             defense += objeto.Defense;
         }
@@ -71,7 +71,7 @@ public class Wizards
         target.Health = target.Health - (this.GetAttack() - target.GetDefense());
     }
     
-    private void AddSpellBook(spellBook libro)
+    private void AddSpellBook(SpellBook libro)
     {
         this.SpellBook= libro;
     }

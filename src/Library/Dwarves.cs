@@ -5,7 +5,7 @@ namespace Library;
 public class Dwarves
 {
     private string Name { get; }
-    private List<item> Items = new List<item>();
+    private List<Item> Items = new List<Item>();
     private int BaseHealth {get;}
     public int Health { set; get; }
 
@@ -16,12 +16,12 @@ public class Dwarves
         this.BaseHealth = baseHealth;
     }
 
-    private void AddItem(item objeto)
+    private void AddItem(Item objeto)
     {
         Items.Add(objeto);
     }
 
-    private void RemoveItem(item objeto)
+    private void RemoveItem(Item objeto)
     {
         Items.Remove(objeto);
     }
@@ -29,7 +29,7 @@ public class Dwarves
     private int GetAttack()
     {
         int attack = 0;
-        foreach (item objeto in Items)
+        foreach (Item objeto in Items)
         {
             attack += objeto.Attack;
         }
@@ -40,7 +40,7 @@ public class Dwarves
     public int GetDefense()
     {
         int defense = 0;
-        foreach (item objeto in Items)
+        foreach (Item objeto in Items)
         {
             defense += objeto.Defense;
         }

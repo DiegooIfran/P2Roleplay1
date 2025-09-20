@@ -59,7 +59,7 @@ public class Elves
     {
         if ((GetAttack() - elf.GetDefense()) >= 0)
         {
-            elf.Health = target.Health - (GetAttack() - elf.GetDefense());
+            elf.Health = elf.Health - (GetAttack() - elf.GetDefense());
         }
     }
     
