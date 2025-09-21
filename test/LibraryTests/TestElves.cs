@@ -1,3 +1,5 @@
+using Library;
+
 namespace LibraryTests;
 
 public class TestElves
@@ -24,23 +26,23 @@ public class TestElves
         const string name = "Legolas";
         const int health = 100;
         Elves elf = new Elves(name, health);
-        Item itemAtt = new Item("Bow", 5, 0);
-        Item itemDef = new Item("Cloak", 0, 3);
+        Item itemAtt = new Item(0, 5, "bow");
+        Item itemDef = new Item(3, 0, "cloak");
         elf.AddItem(itemAtt);
         elf.AddItem(itemDef);
-        Assert.That(elf.Items(0), Is.EqualTo(itemAtt));
-        Assert.That(elf.Items(1), Is.EqualTo(itemDef));
+        Assert.That(elf.Items, Does.Contain(itemAtt));
+        Assert.That(elf.Items, Does.Contain(itemDef));
         elf.RemoveItem(itemAtt);
         elf.RemoveItem(itemDef);
-        Assert.That(elf.Items(), Is.EqualTo(null));
+        Assert.That(elf.Items, Is.Empty);
     }
     
     [Test]
     public void TestAttackElf()
     {
         Elves elfAtt = new Elves("Legolas", 100);
-        Item itemAtt = new Item("Bow", 5, 0);
-        Item itemDef = new Item("Cloak", 0, 3);
+        Item itemAtt = new Item(0, 5, "bow");
+        Item itemDef = new Item(3, 0, "cloak");
         elfAtt.AddItem(itemAtt);
         elfAtt.AddItem(itemDef);
         Elves elfDef = new Elves("Galadriel", 100);
@@ -52,8 +54,8 @@ public class TestElves
     public void TestAttackDwarf()
     {
         Elves elfAtt = new Elves("Legolas", 100);
-        Item itemAtt = new Item("Bow", 5, 0);
-        Item itemDef = new Item("Cloak", 0, 3);
+        Item itemAtt = new Item(0, 5, "bow");
+        Item itemDef = new Item(3, 0, "cloak");
         elfAtt.AddItem(itemAtt);
         elfAtt.AddItem(itemDef);
         Dwarves dwarf = new Dwarves("Durin", 120);
@@ -65,12 +67,12 @@ public class TestElves
     public void TestAttackWizard()
     {
         Elves elfAtt = new Elves("Legolas", 100);
-        Item itemAtt = new Item("Bow", 5, 0);
-        Item itemDef = new Item("Cloak", 0, 3);
+        Item itemAtt = new Item(0, 5, "bow");
+        Item itemDef = new Item(3, 0, "cloak");
         elfAtt.AddItem(itemAtt);
         elfAtt.AddItem(itemDef);
         Wizards wizard = new Wizards("Gandalf", 80);
-        elfAtt.AttackElves(wizard);
+        elfAtt.AttackWizards(wizard);
         Assert.That(wizard.Health, Is.Not.EqualTo(80));
     }
 }
