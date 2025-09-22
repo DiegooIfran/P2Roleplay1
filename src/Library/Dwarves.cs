@@ -4,9 +4,9 @@ namespace Library;
 
 public class Dwarves
 {
-    private string Name { get; }
+    public string Name { get; }
     private List<Item> Items = new List<Item>();
-    private int BaseHealth {get;}
+    public int BaseHealth {get;}
     public int Health { set; get; }
 
     public Dwarves(string name, int baseHealth)
@@ -14,14 +14,16 @@ public class Dwarves
         this.Name = name;
         this.Health = baseHealth;
         this.BaseHealth = baseHealth;
+        //La variable BaseHealth se usara para restaurar la vida en otro momento
     }
+    
 
-    private void AddItem(Item objeto)
+    public void AddItem(Item objeto)
     {
         Items.Add(objeto);
     }
 
-    private void RemoveItem(Item objeto)
+    public void RemoveItem(Item objeto)
     {
         Items.Remove(objeto);
     }
@@ -33,7 +35,7 @@ public class Dwarves
         {
             attack += objeto.Attack;
         }
-
+        // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
     
@@ -44,16 +46,21 @@ public class Dwarves
         {
             defense += objeto.Defense;
         }
+        // Recorre los items que tiene el personaje sumando las defensas de cada uno
 
         return defense;
     }
 
+    public List<Item> GetItems()
+    {
+        return Items;
+    }
     public int GetHealth()
     {
         return this.Health;
     }
 
-    private void Heal()
+    public void Heal()
     {
         this.Health = this.BaseHealth;
     }
