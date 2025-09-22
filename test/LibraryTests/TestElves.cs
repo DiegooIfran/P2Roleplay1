@@ -76,6 +76,7 @@ public class TestElves
         Assert.That(wizard.Health, Is.Not.EqualTo(80));
     }
     
+    [Test]
     public void Heal()
     {
         //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
