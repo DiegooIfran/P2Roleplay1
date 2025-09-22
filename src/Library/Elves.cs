@@ -7,55 +7,55 @@ public class Elves
     public int Health { get; set; }
     public int MaxHealth { get; set; }
 
-    public Elves(string name, int health)
+    public Elves(string name, int health) //Constructor de elfo
     {
         Name = name;
-        MaxHealth = health;
+        MaxHealth = health; //La variable MaxHealth se usara para restaurar la vida en otro momento
         Health = health;
         Items = new List<Item>();
     }
 
-    public int GetAttack()
+    public int GetAttack() //Devuelve el ataque total
     {
         int attack = 0;
-        foreach (Item item in Items)
+        foreach (Item item in Items) // Recorre los items que tiene el personaje sumando los daños de cada uno
         {
             attack += item.Attack;
         }
         return attack;
     }
     
-    public int GetDefense()
+    public int GetDefense() //Devuelve la defensa total
     {
         int defense = 0;
-        foreach (Item item in Items)
+        foreach (Item item in Items) // Recorre los items que tiene el personaje sumando las defensas de cada uno
         {
             defense += item.Defense;
         }
         return defense;
     }
     
-    public int GetHealth()
+    public int GetHealth() //Devuelve la vida actual
     {
         return Health;
     }
     
-    public void Heal()
+    public void Heal() //Cura al maximo
     {
         Health = MaxHealth;
     }
     
-    public void AddItem(Item item)
+    public void AddItem(Item item) //Añade un item
     {
         Items.Add(item);
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item item) //Quita un item
     {
         Items.Remove(item);
     }
     
-    public void AttackElves(Elves elf)
+    public void AttackElves(Elves elf) //Ataca a un elfo y le quita vida segun el ataque de elfo y la defensa del otro elfo
     {
         if ((GetAttack() - elf.GetDefense()) >= 0)
         {
@@ -63,7 +63,7 @@ public class Elves
         }
     }
     
-    public void AttackDwarves(Dwarves dwarf)
+    public void AttackDwarves(Dwarves dwarf) //Ataca a un enano y le quita vida segun el ataque de elfo y la defensa del enano
     {
         if ((GetAttack() - dwarf.GetDefense()) >= 0)
         {
@@ -71,7 +71,7 @@ public class Elves
         }
     }
     
-    public void AttackWizards(Wizards wizard)
+    public void AttackWizards(Wizards wizard) //Ataca a un mago y le quita vida segun el ataque de elfo y la defensa del mago
     {
         if ((GetAttack() - wizard.GetDefense()) >= 0)
         {

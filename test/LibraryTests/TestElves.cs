@@ -12,6 +12,7 @@ public class TestElves
     [Test]
     public void TestNameAndHealth()
     {
+        //En este testeo creo un objeto Elves testeando los nombres y la vida
         const string name = "Legolas";
         const int health = 100;
         Elves elf = new Elves(name, health);
@@ -23,6 +24,7 @@ public class TestElves
     [Test]
     public void TestItems()
     {
+        //En este testeo si funcionan los metodos para agregar y sacar items
         const string name = "Legolas";
         const int health = 100;
         Elves elf = new Elves(name, health);
@@ -40,6 +42,7 @@ public class TestElves
     [Test]
     public void TestAttackElf()
     {
+        //Testeo el metodo para atacar a otro elfo
         Elves elfAtt = new Elves("Legolas", 100);
         Item itemAtt = new Item(0, 5, "Bow");
         Item itemDef = new Item(3, 0, "Cloak");
@@ -53,6 +56,7 @@ public class TestElves
     [Test]
     public void TestAttackDwarf()
     {
+        //Testeo el metodo para atacar a los enanos
         Elves elfAtt = new Elves("Legolas", 100);
         Item itemAtt = new Item(0, 5, "Bow");
         Item itemDef = new Item(3, 0, "Cloak");
@@ -66,6 +70,7 @@ public class TestElves
     [Test]
     public void TestAttackWizard()
     {
+        //Testeo el metodo para atacar a los magos
         Elves elfAtt = new Elves("Legolas", 100);
         Item itemAtt = new Item(0, 5, "Bow");
         Item itemDef = new Item(3, 0, "Cloak");
