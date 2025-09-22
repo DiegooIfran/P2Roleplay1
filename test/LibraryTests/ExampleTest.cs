@@ -1,3 +1,6 @@
+using System.Net;
+using Library;
+
 namespace LibraryTests;
 
 public class Tests
