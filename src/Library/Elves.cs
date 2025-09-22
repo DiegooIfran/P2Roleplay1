@@ -40,7 +40,7 @@ public class Elves
         return Health;
     }
     
-    private void Heal()
+    public void Heal()
     {
         Health = MaxHealth;
     }
