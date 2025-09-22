@@ -7,7 +7,7 @@ namespace LibraryTests
         [Test]
         public void TestAddAndRemoveSpells()
         {
-            // Justificación:valida que los hechizos se puedan agregar y eliminar del SpellBook
+            // Justificacion:valida que los hechizos se puedan agregar y eliminar del SpellBook
             Spell spell1 = new Spell("Spell", 15);
             Spell spell2 = new Spell("Spell", 5);
             SpellBook spellBook = new SpellBook();

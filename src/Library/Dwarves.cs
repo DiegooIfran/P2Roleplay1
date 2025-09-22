@@ -4,9 +4,9 @@ namespace Library;
 
 public class Dwarves
 {
-    private string Name { get; }
+    public string Name { get; }
     private List<Item> Items = new List<Item>();
-    private int BaseHealth {get;}
+    public int BaseHealth {get;}
     public int Health { set; get; }
 
     public Dwarves(string name, int baseHealth)
@@ -16,12 +16,12 @@ public class Dwarves
         this.BaseHealth = baseHealth;
     }
 
-    private void AddItem(Item objeto)
+    public void AddItem(Item objeto)
     {
         Items.Add(objeto);
     }
 
-    private void RemoveItem(Item objeto)
+    public void RemoveItem(Item objeto)
     {
         Items.Remove(objeto);
     }
@@ -48,6 +48,10 @@ public class Dwarves
         return defense;
     }
 
+    public List<Item> GetItems()
+    {
+        return Items;
+    }
     public int GetHealth()
     {
         return this.Health;
