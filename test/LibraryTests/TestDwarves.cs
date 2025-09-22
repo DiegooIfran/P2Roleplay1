@@ -12,6 +12,7 @@ public class TestDwarves
     [Test]
     public void TestNameAndHealth()
     {
+        // En este testeo creo un objeto Dwarves testeando los nombres y la vida
         string name = "Gimli";
         int health = 150;
         Dwarves dwarf = new Dwarves(name, health);
@@ -23,6 +24,7 @@ public class TestDwarves
     [Test]
     public void TestItems()
     {
+        //En este testeo si funcionan los metodos para agregar y sacar items
         string name = "Gimli";
         int health = 150;
         Dwarves dwarf = new Dwarves(name, health);
@@ -40,6 +42,7 @@ public class TestDwarves
     [Test]
     public void TestAttackDwarf()
     {
+        //Testeo el metodo para atacar a otro Dwarf
         Dwarves dwarf = new Dwarves("Gimli", 150);
         Item itemAtt = new Item(0, 2, "Dwarven Axe");
         Item itemDef = new Item(2, 0, "Squire's Helm");
@@ -53,6 +56,7 @@ public class TestDwarves
     [Test]
     public void TestAttackElf()
     {
+        //Testeo el metodo para atacar a los elfos
         Dwarves dwarf = new Dwarves("Gimli", 150);
         Item itemAtt = new Item(0, 2, "Dwarven Axe");
         Item itemDef = new Item(2, 0, "Squire's Helm");
@@ -66,6 +70,7 @@ public class TestDwarves
     [Test]
     public void TestAttackWizards()
     {
+        //Testeo el metodo para atacar a los magos
         Dwarves dwarf = new Dwarves("Gimli", 150);
         Item itemAtt = new Item(0, 2, "Dwarven Axe");
         Item itemDef = new Item(2, 0, "Squire's Helm");
@@ -74,5 +79,20 @@ public class TestDwarves
         Wizards wizardTarget = new Wizards("Gandalf", 70);
         dwarf.AttackWizards(wizardTarget);
         Assert.That(wizardTarget.GetHealth(), Is.Not.EqualTo(70));
+    }
+    
+    [Test]
+    public void Heal()
+    {
+        //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
+        Dwarves dwarf1 = new Dwarves("Gimli", 150);
+        Dwarves dwarf2 = new Dwarves("Gruñon", 100);
+        Item itemAtt = new Item(0, 10, "Dwarven Axe");
+        dwarf2.AddItem(itemAtt);
+        dwarf2.AttackDwarves(dwarf1);
+        Assert.That(dwarf1.GetHealth(), Is.EqualTo(140));
+        dwarf1.Heal();
+        Assert.That(dwarf1.GetHealth(), Is.EqualTo(150));
+
     }
 }

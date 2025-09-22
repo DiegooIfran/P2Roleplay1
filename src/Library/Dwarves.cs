@@ -14,7 +14,9 @@ public class Dwarves
         this.Name = name;
         this.Health = baseHealth;
         this.BaseHealth = baseHealth;
+        //La variable BaseHealth se usara para restaurar la vida en otro momento
     }
+    
 
     public void AddItem(Item objeto)
     {
@@ -33,7 +35,7 @@ public class Dwarves
         {
             attack += objeto.Attack;
         }
-
+        // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
     
@@ -44,6 +46,7 @@ public class Dwarves
         {
             defense += objeto.Defense;
         }
+        // Recorre los items que tiene el personaje sumando las defensas de cada uno
 
         return defense;
     }
@@ -57,7 +60,7 @@ public class Dwarves
         return this.Health;
     }
 
-    private void Heal()
+    public void Heal()
     {
         this.Health = this.BaseHealth;
     }
