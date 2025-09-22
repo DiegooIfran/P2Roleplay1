@@ -72,7 +72,7 @@ public class TestWizards
     public void TestAttackWizards()
     {
         //Testeo el metodo para atacar a los magos
-        Wizards wizard1 = new Wizards("Gimli", 150);
+        Wizards wizard1 = new Wizards("Mago Eléctrico", 150);
         Item itemAtt = new Item(0, 2, "Dwarven Axe");
         Item itemDef = new Item(2, 0, "Squire's Helm");
         wizard1.AddItem(itemAtt);
@@ -86,14 +86,14 @@ public class TestWizards
     public void Heal()
     {
         //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
-        Wizards wizard = new Wizards("Gimli", 150);
-        Dwarves dwarf1 = new Dwarves("Gruñon", 100);
+        Wizards wizard = new Wizards("Mago Eléctrico", 150);
+        Dwarves dwarf = new Dwarves("Gruñon", 100);
         Item itemAtt = new Item(0, 10, "Dwarven Axe");
-        dwarf1.AddItem(itemAtt);
-        wizard.AttackDwarves(dwarf1);
-        Assert.That(dwarf1.GetHealth(), Is.EqualTo(140));
-        dwarf1.Heal();
-        Assert.That(dwarf1.GetHealth(), Is.EqualTo(150));
+        dwarf.AddItem(itemAtt);
+        dwarf.AttackWizards(wizard);
+        Assert.That(wizard.GetHealth(), Is.EqualTo(140));
+        wizard.Heal();
+        Assert.That(wizard.GetHealth(), Is.EqualTo(150));
     }
     [Test]
     public void SpellBook()
