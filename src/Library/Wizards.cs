@@ -1,10 +1,10 @@
 namespace Library;
 public class Wizards
 {
-    private string Name { get; }
+    public string Name { get; }
     private List<Item> Items = [];
-    private SpellBook SpellBook = null;
-    private int BaseHealth {get;}
+    public SpellBook SpellBook;
+    public int BaseHealth {get;}
     public int Health { set; get; }
 
     public Wizards(string name, int baseHealth)
@@ -14,16 +14,19 @@ public class Wizards
         this.BaseHealth = baseHealth;
     }
 
-    private void AddItem(Item objeto)
+    public void AddItem(Item objeto)
     {
         Items.Add(objeto);
     }
 
-    private void RemoveItem(Item objeto)
+    public void RemoveItem(Item objeto)
     {
         Items.Remove(objeto);
     }
-
+    public List<Item> GetItems()
+    {
+        return Items;
+    }
     private int GetAttack()
     {
         int attack = 0;
@@ -70,8 +73,8 @@ public class Wizards
     {
         target.Health = target.Health - (this.GetAttack() - target.GetDefense());
     }
-    
-    private void AddSpellBook(SpellBook libro)
+
+    public void AddSpellBook(SpellBook libro)
     {
         this.SpellBook= libro;
     }
