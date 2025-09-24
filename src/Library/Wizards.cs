@@ -54,7 +54,7 @@ public class Wizards : IMagicCharacter
         return this.Health;
     }
 
-    private void Heal()
+    public void Heal()
     {
         this.Health = this.BaseHealth;
     }
