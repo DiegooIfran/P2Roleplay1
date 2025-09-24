@@ -1,8 +1,8 @@
 namespace Library;
-public class Wizards
+public class Wizards : IMagicCharacter
 {
     public string Name { get; }
-    private List<Item> Items = [];
+    private List<IItem> _items = new List<IItem>();
     public SpellBook SpellBook;
     public int BaseHealth {get;}
     public int Health { set; get; }
@@ -14,23 +14,23 @@ public class Wizards
         this.BaseHealth = baseHealth;
     }
 
-    public void AddItem(Item objeto)
+    public void AddItem(IItem objeto)
     {
-        Items.Add(objeto);
+        _items.Add(objeto);
     }
 
-    public void RemoveItem(Item objeto)
+    public void RemoveItem(IItem objeto)
     {
-        Items.Remove(objeto);
+        _items.Remove(objeto);
     }
-    public List<Item> GetItems()
+    public List<IItem> GetItems()
     {
-        return Items;
+        return _items;
     }
     private int GetAttack()
     {
         int attack = 0;
-        foreach (Item objeto in Items)
+        foreach (IItem objeto in _items)
         {
             attack += objeto.Attack;
         }
@@ -41,7 +41,7 @@ public class Wizards
     public int GetDefense()
     {
         int defense = 0;
-        foreach (Item objeto in Items)
+        foreach (IItem objeto in _items)
         {
             defense += objeto.Defense;
         }
@@ -59,19 +59,12 @@ public class Wizards
         this.Health = this.BaseHealth;
     }
 
-    public void AttackElves(Elves target)
+    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del mago
     {
-        target.Health = target.Health - (this.GetAttack() - target.GetDefense());
-    }
-    
-    public void AttackDwarves(Dwarves target)
-    {
-        target.Health = target.Health - (this.GetAttack() - target.GetDefense());
-    }
-    
-    public void AttackWizards(Wizards target)
-    {
-        target.Health = target.Health - (this.GetAttack() - target.GetDefense());
+        if ((this.GetAttack() - target.GetDefense()) >= 0) //Para checkear que el daño sea un numero positivo
+        {
+            target.Health = target.Health - (this.GetAttack() - target.GetDefense());
+        }
     }
 
     public void AddSpellBook(SpellBook libro)
