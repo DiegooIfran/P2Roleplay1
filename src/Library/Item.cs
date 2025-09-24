@@ -9,7 +9,7 @@ public class Item
     public string Type { get; private set; }
     
     
-    // Esto garantiza que todo Item creado tenga un estado válido desde el inicio
+    // Esto garantiza que todos los Items creados tengan un estado válido desde el inicio
     public Item(int defense, int attack, string type)
     {
         Defense = defense;
