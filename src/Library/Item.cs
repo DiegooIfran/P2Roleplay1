@@ -1,6 +1,6 @@
 ﻿namespace Library;
 
-public class Item
+public class IItem
 {
     // Aplicamos el principio de encapsulamiento: propiedades con "private set",
     // para que solo puedan ser modificadas en el constructor
@@ -10,7 +10,7 @@ public class Item
     
     
     // Esto garantiza que todo Item creado tenga un estado válido desde el inicio
-    public Item(int defense, int attack, string type)
+    public IItem(int defense, int attack, string type)
     {
         Defense = defense;
         Attack = attack;
