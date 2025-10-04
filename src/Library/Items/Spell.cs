@@ -1,6 +1,6 @@
 ﻿namespace Library;
 
-public class Spell
+public class Spell 
 { 
     // Usamos propiedades inmutables (private set) para proteger la información del hechizo
     // Esto sigue el principio de encapsulamiento

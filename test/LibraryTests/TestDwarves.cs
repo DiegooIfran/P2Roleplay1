@@ -1,4 +1,5 @@
 using Library;
+using Ucu.Poo.RoleplayGame;
 
 namespace LibraryTests;
 
@@ -28,8 +29,8 @@ public class TestDwarves
         string name = "Gimli";
         int health = 150;
         Dwarves dwarf = new Dwarves(name, health);
-        Item itemAtt = new Axe(0, 2, "Dwarven Axe");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
+        Axe itemAtt = new Axe("Dwarven Axe");
+        Helmet itemDef = new Helmet("Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);
         Assert.That(dwarf.GetItems(), Does.Contain(itemAtt));
@@ -44,12 +45,12 @@ public class TestDwarves
     {
         //Testeo el metodo para atacar a otro Dwarf
         Dwarves dwarf = new Dwarves("Gimli", 150);
-        Item itemAtt = new Item(0, 2, "Dwarven Axe");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
+        Axe itemAtt = new Axe("Dwarven Axe");
+        Helmet itemDef = new Helmet("Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);
         Dwarves dwarfTarget = new Dwarves("Gruñon", 120);
-        dwarf.AttackDwarves(dwarfTarget);
+        dwarf.Attack(dwarfTarget);
         Assert.That(dwarfTarget.GetHealth(), Is.Not.EqualTo(120));
     }
 
@@ -58,12 +59,12 @@ public class TestDwarves
     {
         //Testeo el metodo para atacar a los elfos
         Dwarves dwarf = new Dwarves("Gimli", 150);
-        Item itemAtt = new Item(0, 2, "Dwarven Axe");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
+        Axe itemAtt = new Axe( "Dwarven Axe");
+        Helmet itemDef = new Helmet( "Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);
         Elves elfTarget = new Elves("Legolas", 100);
-        dwarf.AttackElves(elfTarget);
+        dwarf.Attack(elfTarget);
         Assert.That(elfTarget.GetHealth(), Is.Not.EqualTo(100));
     }
 
@@ -72,12 +73,12 @@ public class TestDwarves
     {
         //Testeo el metodo para atacar a los magos
         Dwarves dwarf = new Dwarves("Gimli", 150);
-        Item itemAtt = new Item(0, 2, "Dwarven Axe");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
+        Axe itemAtt = new Axe("Dwarven Axe");
+        Helmet itemDef = new Helmet( "Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);
         Wizards wizardTarget = new Wizards("Gandalf", 70);
-        dwarf.AttackWizards(wizardTarget);
+        dwarf.Attack(wizardTarget);
         Assert.That(wizardTarget.GetHealth(), Is.Not.EqualTo(70));
     }
     
@@ -87,9 +88,9 @@ public class TestDwarves
         //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
         Dwarves dwarf1 = new Dwarves("Gimli", 150);
         Dwarves dwarf2 = new Dwarves("Gruñon", 100);
-        Item itemAtt = new Item(0, 10, "Dwarven Axe");
+        Axe itemAtt = new Axe("Dwarven Axe");
         dwarf2.AddItem(itemAtt);
-        dwarf2.AttackDwarves(dwarf1);
+        dwarf2.Attack(dwarf1);
         Assert.That(dwarf1.GetHealth(), Is.EqualTo(140));
         dwarf1.Heal();
         Assert.That(dwarf1.GetHealth(), Is.EqualTo(150));

@@ -18,7 +18,7 @@ public class TestElves
         Elves elf = new Elves(name, health);
         Assert.That(elf.Name, Is.EqualTo(name));
         Assert.That(elf.Health, Is.EqualTo(health));
-        Assert.That(elf.MaxHealth, Is.EqualTo(health));
+        Assert.That(elf.BaseHealth, Is.EqualTo(health));
     }
     
     [Test]

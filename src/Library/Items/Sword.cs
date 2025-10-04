@@ -1,12 +1,19 @@
+using Library;
+
 namespace Ucu.Poo.RoleplayGame;
 
-public class Sword
+public class Sword : IAttackItem
 {
-    public int AttackValue 
+    public int Attack
     {
         get
         {
             return 20;
         } 
+    }
+    public string Name { get; set; }
+    public Sword(string name)
+    {
+        this.Name = name;
     }
 }

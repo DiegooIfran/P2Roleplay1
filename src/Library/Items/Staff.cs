@@ -1,13 +1,20 @@
+using Library;
+
 namespace Ucu.Poo.RoleplayGame;
 
-public class Staff
+public class Staff : IMagicItem
 {
-    public int AttackValue 
+    public int Attack
     {
         get
         {
             return 100;
         } 
+    }
+    public string Name { get; set; }
+    public Staff(string name)
+    {
+        this.Name = name;
     }
 
     public int DefenseValue
