@@ -28,7 +28,7 @@ public class TestDwarves
         string name = "Gimli";
         int health = 150;
         Dwarves dwarf = new Dwarves(name, health);
-        Item itemAtt = new Item(0, 2, "Dwarven Axe");
+        Item itemAtt = new Axe(0, 2, "Dwarven Axe");
         Item itemDef = new Item(2, 0, "Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);

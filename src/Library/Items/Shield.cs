@@ -1,12 +1,19 @@
+using Library;
+
 namespace Ucu.Poo.RoleplayGame;
 
-public class Shield
+public class Shield : IDefenseItem
 {
-    public int DefenseValue
+    public int Defense
     {
         get
         {
-            return 14;
+            return 10;
         }
+    }    
+    public string Name { get; set; }
+    public Shield(string name)
+    {
+        this.Name = name;
     }
 }
