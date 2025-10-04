@@ -2,7 +2,7 @@ namespace Library;
 public class Wizards : IMagicCharacter
 {
     public string Name { get; }
-    public List<IItem> Items { get; }
+    private List<IItem> _items { get; }
     private List<IMagicItem> _magicItems = new List<IMagicItem>();
     public SpellBook SpellBook;
     public int BaseHealth {get;}
@@ -17,37 +17,44 @@ public class Wizards : IMagicCharacter
 
     public void AddItem(IItem objeto)
     {
-        Items.Add(objeto);
+        _items.Add(objeto);
     }
 
     public void RemoveItem(IItem objeto)
     {
-        Items.Remove(objeto);
+        _items.Remove(objeto);
     }
     public List<IItem> GetItems()
     {
-        return Items;
+        return _items;
     }
 
     public int GetAttack()
     {
         int attack = 0;
-        foreach (IItem objeto in Items)
+        foreach (IItem objeto in _items)
         {
-            attack += objeto.Attack;
+            if (objeto is IAttackItem attackItem)
+            {
+                attack += attackItem.Attack;
+            }
         }
-
+        // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
     
     public int GetDefense()
     {
         int defense = 0;
-        foreach (IItem objeto in Items)
+        foreach (IItem objeto in _items)
         {
-            defense += objeto.Defense;
+            if (objeto is IDefenseItem defenseItem)
+            {
+                defense += defenseItem.Defense;
+            }
         }
-
+        // Recorre los items que tiene el personaje sumando las defensas de cada uno
+        
         return defense;
     }
 
