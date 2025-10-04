@@ -1,4 +1,5 @@
 using Library;
+using Ucu.Poo.RoleplayGame;
 
 namespace LibraryTests
 {
@@ -8,10 +9,10 @@ namespace LibraryTests
         public void TestItemStoresValues()
         {
             // Justificación: verifica que el constructor de Item asigne bien sus propiedades
-            Item sword = new Item(5, 10, "Sword");
+            Sword sword = new Sword("Sword");
 
             Assert.That(sword.Defense, Is.EqualTo(5));
-            Assert.That(sword.Attack, Is.EqualTo(10));
+            Assert.That(sword.Attack, Is.EqualTo(20));
             Assert.That(sword.Type, Is.EqualTo("Sword"));
         }
         
