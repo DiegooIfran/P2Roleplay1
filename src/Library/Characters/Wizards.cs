@@ -2,7 +2,8 @@ namespace Library;
 public class Wizards : IMagicCharacter
 {
     public string Name { get; }
-    private List<IItem> _items = new List<IItem>();
+    public List<IItem> Items { get; }
+    private List<IMagicItem> _magicItems = new List<IMagicItem>();
     public SpellBook SpellBook;
     public int BaseHealth {get;}
     public int Health { set; get; }
@@ -16,21 +17,22 @@ public class Wizards : IMagicCharacter
 
     public void AddItem(IItem objeto)
     {
-        _items.Add(objeto);
+        Items.Add(objeto);
     }
 
     public void RemoveItem(IItem objeto)
     {
-        _items.Remove(objeto);
+        Items.Remove(objeto);
     }
     public List<IItem> GetItems()
     {
-        return _items;
+        return Items;
     }
-    private int GetAttack()
+
+    public int GetAttack()
     {
         int attack = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             attack += objeto.Attack;
         }
@@ -41,7 +43,7 @@ public class Wizards : IMagicCharacter
     public int GetDefense()
     {
         int defense = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             defense += objeto.Defense;
         }
@@ -53,7 +55,6 @@ public class Wizards : IMagicCharacter
     {
         return this.Health;
     }
-
     public void Heal()
     {
         this.Health = this.BaseHealth;
@@ -70,5 +71,15 @@ public class Wizards : IMagicCharacter
     public void AddSpellBook(SpellBook libro)
     {
         this.SpellBook= libro;
+    }
+
+    public void AddMagicItem(IMagicItem magicItem)
+    {
+        this._magicItems.Add(magicItem);
+    }
+
+    public void RemoveMagicItem(IMagicItem magicItem)
+    {
+        this._magicItems.Remove(magicItem);
     }
 }
