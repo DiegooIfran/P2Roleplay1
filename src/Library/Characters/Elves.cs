@@ -5,7 +5,7 @@ public class Elves : ICharacter
     public string Name { get; set; }
     private List<IItem> _items = new List<IItem>();
     public int Health { get; set; }
-    private int BaseHealth { get; set; }
+    public int BaseHealth { get; set; }
 
     public Elves(string name, int health) //Constructor de elfo
     {
@@ -14,7 +14,7 @@ public class Elves : ICharacter
         Health = health;
     }
 
-    private int GetAttack() //Devuelve el ataque total
+    public int GetAttack() //Devuelve el ataque total
     {
         int attack = 0;
         foreach (IItem item in _items) // Recorre los items que tiene el personaje sumando los daños de cada uno
@@ -24,7 +24,7 @@ public class Elves : ICharacter
         return attack;
     }
     
-    private int GetDefense() //Devuelve la defensa total
+    public int GetDefense() //Devuelve la defensa total
     {
         int defense = 0;
         foreach (IItem item in _items) // Recorre los items que tiene el personaje sumando las defensas de cada uno

@@ -3,7 +3,7 @@ namespace Library;
 public interface ICharacter
 {
     string Name { get; }  
-    IReadOnlyList<Item> Items { get; } 
+    List<IItem> Items { get; } 
     int Health { get; set; }
     int BaseHealth { get; }
 
