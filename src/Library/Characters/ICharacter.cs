@@ -5,7 +5,7 @@ public interface ICharacter
     string Name { get; }  
     IReadOnlyList<Item> Items { get; } 
     int Health { get; set; }
-    int MaxHealth { get; }
+    int BaseHealth { get; }
 
     void AddItem(IItem item);
     void RemoveItem(IItem item);
