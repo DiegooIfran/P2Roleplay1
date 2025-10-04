@@ -14,23 +14,32 @@ public class Elves : ICharacter
         Health = health;
     }
 
-    public int GetAttack() //Devuelve el ataque total
+    public int GetAttack()
     {
         int attack = 0;
-        foreach (IItem item in _items) // Recorre los items que tiene el personaje sumando los daños de cada uno
+        foreach (IItem objeto in _items)
         {
-            attack += item.Attack;
+            if (objeto is IAttackItem attackItem)
+            {
+                attack += attackItem.Attack;
+            }
         }
+        // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
     
-    public int GetDefense() //Devuelve la defensa total
+    public int GetDefense()
     {
         int defense = 0;
-        foreach (IItem item in _items) // Recorre los items que tiene el personaje sumando las defensas de cada uno
+        foreach (IItem objeto in _items)
         {
-            defense += item.Defense;
+            if (objeto is IDefenseItem defenseItem)
+            {
+                defense += defenseItem.Defense;
+            }
         }
+        // Recorre los items que tiene el personaje sumando las defensas de cada uno
+        
         return defense;
     }
     

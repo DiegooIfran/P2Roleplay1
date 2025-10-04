@@ -28,12 +28,15 @@ public class Dwarves : ICharacter
         _items.Remove(objeto);
     }
 
-    private int GetAttack()
+    public int GetAttack()
     {
         int attack = 0;
         foreach (IItem objeto in _items)
         {
-            attack += objeto.Attack;
+            if (objeto is IAttackItem attackItem)
+            {
+                attack += attackItem.Attack;
+            }
         }
         // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
@@ -44,10 +47,13 @@ public class Dwarves : ICharacter
         int defense = 0;
         foreach (IItem objeto in _items)
         {
-            defense += objeto.Defense;
+            if (objeto is IDefenseItem defenseItem)
+            {
+                defense += defenseItem.Defense;
+            }
         }
         // Recorre los items que tiene el personaje sumando las defensas de cada uno
-
+        
         return defense;
     }
 
