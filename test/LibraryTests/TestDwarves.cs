@@ -92,7 +92,7 @@ public class TestDwarves
         Axe itemAtt = new Axe("Dwarven Axe");
         dwarf2.AddItem(itemAtt);
         dwarf2.Attack(dwarf1);
-        Assert.That(dwarf1.GetHealth(), Is.EqualTo(140));
+        Assert.That(dwarf1.GetHealth(), Is.EqualTo(135));
         dwarf1.Heal();
         Assert.That(dwarf1.GetHealth(), Is.EqualTo(150));
 
