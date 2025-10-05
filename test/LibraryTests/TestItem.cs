@@ -20,16 +20,16 @@ namespace LibraryTests
         public void TestMultipleItems()
         {
             // Justificación: verifico que se puedan crear distintos items de diferentes tipos
-            Item sword = new Item(5, 10, "Sword");
-            Item tunic = new Item(5, 0, "Tunic");
-            Item shield = new Item(10, 0, "Shield");
+            Sword sword = new Sword( "Sword");
+            Armor armor = new Armor("Armor");
+            Shield shield = new Shield("Shield");
 
-            Assert.That(sword.Attack, Is.EqualTo(10));
-            Assert.That(tunic.Defense, Is.EqualTo(5));
+            Assert.That(sword.Attack, Is.EqualTo(20));
+            Assert.That(armor.Defense, Is.EqualTo(15));
             Assert.That(shield.Defense, Is.EqualTo(10));
 
             Assert.That(sword.Type, Is.EqualTo("Sword"));
-            Assert.That(tunic.Type, Is.EqualTo("Tunic"));
+            Assert.That(armor.Type, Is.EqualTo("Tunic"));
             Assert.That(shield.Type, Is.EqualTo("Shield"));
         }
     }

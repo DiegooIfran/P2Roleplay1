@@ -1,5 +1,6 @@
 using Library;
 using Library.Characters;
+using Ucu.Poo.RoleplayGame;
 
 namespace LibraryTests;
 
@@ -30,13 +31,13 @@ public class TestWizards
         string name = "Mago Eléctrico";
         int health = 150;
         Wizards wizard = new Wizards(name, health);
-        Item itemAtt = new Item(0, 2, "Anillo Mágico");
-        Item itemDef = new Item(2, 0, "Capa");
-        wizard.AddItem(itemAtt);
+        Staff itemAtt = new Staff("Staff");
+        Armor itemDef = new Armor("Capa");
+        wizard.AddMagicItem(itemAtt);
         wizard.AddItem(itemDef);
         Assert.That(wizard.GetItems(), Does.Contain(itemAtt));
         Assert.That(wizard.GetItems(), Does.Contain(itemDef));
-        wizard.RemoveItem(itemAtt);
+        wizard.RemoveMagicItem(itemAtt);
         wizard.RemoveItem(itemDef);
         Assert.That(wizard.GetItems(), Is.Empty);
     }
@@ -46,12 +47,12 @@ public class TestWizards
     {
         //Testeo el metodo para atacar Dwarf
         Wizards dwarf = new Wizards("Mago Eléctrico", 150);
-        Item itemAtt = new Item(0, 2, "Anillo Mágico");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
-        dwarf.AddItem(itemAtt);
+        Staff itemAtt = new Staff("Staff");
+        Helmet itemDef = new Helmet("Squire's Helm");
+        dwarf.AddMagicItem(itemAtt);
         dwarf.AddItem(itemDef);
         Dwarves dwarfTarget = new Dwarves("Gruñon", 120);
-        dwarf.AttackDwarves(dwarfTarget);
+        dwarf.Attack(dwarfTarget);
         Assert.That(dwarfTarget.GetHealth(), Is.Not.EqualTo(120));
     }
 
@@ -60,12 +61,12 @@ public class TestWizards
     {
         //Testeo el metodo para atacar Elfo
         Wizards dwarf = new Wizards("Mago Eléctrico", 150);
-        Item itemAtt = new Item(0, 2, "Anillo Mágico");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
-        dwarf.AddItem(itemAtt);
+        Staff itemAtt = new Staff("Anillo Mágico");
+        Helmet itemDef = new Helmet("Squire's Helm");
+        dwarf.AddMagicItem(itemAtt);
         dwarf.AddItem(itemDef);
         Elves elfTarget = new Elves("Legolas", 100);
-        dwarf.AttackElves(elfTarget);
+        dwarf.Attack(elfTarget);
         Assert.That(elfTarget.GetHealth(), Is.Not.EqualTo(100));
     }
 
@@ -74,12 +75,12 @@ public class TestWizards
     {
         //Testeo el metodo para atacar a los magos
         Wizards wizard1 = new Wizards("Mago Eléctrico", 150);
-        Item itemAtt = new Item(0, 2, "Dwarven Axe");
-        Item itemDef = new Item(2, 0, "Squire's Helm");
+        Axe itemAtt = new Axe("Dwarven Axe");
+        Helmet itemDef = new Helmet("Squire's Helm");
         wizard1.AddItem(itemAtt);
         wizard1.AddItem(itemDef);
         Wizards wizard2 = new Wizards("Gandalf", 70);
-        wizard1.AttackWizards(wizard2);
+        wizard1.Attack(wizard2);
         Assert.That(wizard2.GetHealth(), Is.Not.EqualTo(70));
     }
     
@@ -89,10 +90,10 @@ public class TestWizards
         //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
         Wizards wizard = new Wizards("Mago Eléctrico", 150);
         Dwarves dwarf = new Dwarves("Gruñon", 100);
-        Item itemAtt = new Item(0, 10, "Dwarven Axe");
+        Axe itemAtt = new Axe( "Dwarven Axe");
         dwarf.AddItem(itemAtt);
-        dwarf.AttackWizards(wizard);
-        Assert.That(wizard.GetHealth(), Is.EqualTo(140));
+        dwarf.Attack(wizard);
+        Assert.That(wizard.GetHealth(), Is.EqualTo(135));
         wizard.Heal();
         Assert.That(wizard.GetHealth(), Is.EqualTo(150));
     }
