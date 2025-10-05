@@ -16,21 +16,21 @@ internal static class Program
                 Console.WriteLine($"Elegiste ser {pj}");
                 Console.Write("Selecciona un nombre: ");
                 string name = Console.ReadLine();
-                Elves elfo = new Elves(name, 100);
+                Elf elfo = new Elf(name, 100);
                 Console.WriteLine($"Eres {name}, un {pj}.");
                 break;
             case "enano":
                 Console.WriteLine($"Elegiste ser {pj}");
                 Console.Write("Selecciona un nombre: ");
                 name = Console.ReadLine();
-                Dwarves enano = new Dwarves(name, 120);
+                Dwarf enano = new Dwarf(name, 120);
                 Console.WriteLine($"Eres {name}, un {pj}.");
                 break;
             case "mago":
                 Console.WriteLine($"Elegiste ser {pj}");
                 Console.Write("Selecciona un nombre: ");
                 name = Console.ReadLine();
-                Wizards mago = new Wizards(name, 80);
+                Wizard mago = new Wizard(name, 80);
                 Console.WriteLine($"Eres {name}, un {pj}.");
                 break;
             case "bruja":
@@ -45,10 +45,10 @@ internal static class Program
                 break;
         }
 
-        Dwarves gloin = new Dwarves("Glóin", 120);
+        Dwarf gloin = new Dwarf("Glóin", 120);
         Witch brujaNocturna = new Witch("Bruja Nocturna", 90);
-        Wizards magoHielo = new Wizards("Mago de Hielo", 80);
-        Elves arwen = new Elves("Arwen", 180);
+        Wizard magoHielo = new Wizard("Mago de Hielo", 80);
+        Elf arwen = new Elf("Arwen", 180);
 
         Helmet helmet = new Helmet("Super Casco");
         gloin.AddItem(helmet);

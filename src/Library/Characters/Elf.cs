@@ -1,31 +1,17 @@
-using System.Runtime.CompilerServices;
-
 namespace Library;
 
-public class Dwarves : ICharacter
+public class Elf : ICharacter
 {
-    public string Name { get; }
+    public string Name { get; set; }
     private List<IItem> _items = new List<IItem>();
-    public int BaseHealth {get;}
-    public int Health { set; get; }
+    public int Health { get; set; }
+    public int BaseHealth { get; set; }
 
-    public Dwarves(string name, int baseHealth)
+    public Elf(string name, int health) //Constructor de elfo
     {
-        this.Name = name;
-        this.Health = baseHealth;
-        this.BaseHealth = baseHealth;
-        //La variable BaseHealth se usara para restaurar la vida en otro momento
-    }
-    
-
-    public void AddItem(IItem objeto)
-    {
-        _items.Add(objeto);
-    }
-
-    public void RemoveItem(IItem objeto)
-    {
-        _items.Remove(objeto);
+        Name = name;
+        BaseHealth = health; //La variable MaxHealth se usara para restaurar la vida en otro momento
+        Health = health;
     }
 
     public int GetAttack()
@@ -56,22 +42,33 @@ public class Dwarves : ICharacter
         
         return defense;
     }
-
+    
     public List<IItem> GetItems()
     {
         return _items;
     }
-    public int GetHealth()
+    
+    public int GetHealth() //Devuelve la vida actual
     {
-        return this.Health;
+        return Health;
+    }
+    
+    public void Heal() //Cura al maximo
+    {
+        Health = BaseHealth;
+    }
+    
+    public void AddItem(IItem item) //Añade un item
+    {
+        _items.Add(item);
     }
 
-    public void Heal()
+    public void RemoveItem(IItem item) //Quita un item
     {
-        this.Health = this.BaseHealth;
+        _items.Remove(item);
     }
-
-    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del enano
+    
+    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del elfo
     {
         if ((this.GetAttack() - target.GetDefense()) >= 0) //Para checkear que el daño sea un numero positivo
         {

@@ -61,8 +61,14 @@ public class Witch: IMagicCharacter
                 defense += defenseItem.Defense;
             }
         }
+
+        foreach (IMagicItem objeto in _magicItems)
+            if (objeto is IDefenseItem defenseItem)
+            {
+                defense += defenseItem.Defense;
+            }
         // Recorre los items que tiene el personaje sumando las defensas de cada uno
-        
+
         return defense;
     }
 
@@ -96,5 +102,10 @@ public class Witch: IMagicCharacter
     public void RemoveMagicItem(IMagicItem magicItem)
     {
         this._magicItems.Remove(magicItem);
+    }
+
+    public List<IMagicItem> GetMagicItems()
+    {
+        return this._magicItems;
     }
 }
