@@ -41,10 +41,7 @@ public class Wizards : IMagicCharacter
         }
         foreach (IMagicItem objeto in _magicItems)
         {
-            if (objeto is IAttackItem attackItem)
-            {
-                attack += attackItem.Attack;
-            }
+                attack += objeto.Attack;
         }
         // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
@@ -62,10 +59,7 @@ public class Wizards : IMagicCharacter
         }
         foreach (IMagicItem objeto in _magicItems)
         {
-            if (objeto is IDefenseItem defenseItem)
-            {
-                defense += defenseItem.Defense;
-            }
+                defense += objeto.Defense;
         }
         // Recorre los items que tiene el personaje sumando las defensas de cada uno
         
@@ -103,4 +97,9 @@ public class Wizards : IMagicCharacter
     {
         this._magicItems.Remove(magicItem);
     }
+
+    public List<IMagicItem> GetMagicItems()
+    {
+        return this._magicItems;
+    } 
 }

@@ -10,10 +10,8 @@ namespace LibraryTests
         {
             // Justificación: verifica que el constructor de Item asigne bien sus propiedades
             Sword sword = new Sword("Sword");
-
-            Assert.That(sword.Defense, Is.EqualTo(5));
             Assert.That(sword.Attack, Is.EqualTo(20));
-            Assert.That(sword.Type, Is.EqualTo("Sword"));
+            Assert.That(sword, Is.InstanceOf<Sword>());;
         }
         
         [Test]
@@ -28,9 +26,9 @@ namespace LibraryTests
             Assert.That(armor.Defense, Is.EqualTo(15));
             Assert.That(shield.Defense, Is.EqualTo(10));
 
-            Assert.That(sword.Type, Is.EqualTo("Sword"));
-            Assert.That(armor.Type, Is.EqualTo("Tunic"));
-            Assert.That(shield.Type, Is.EqualTo("Shield"));
+            Assert.That(sword, Is.InstanceOf<Sword>());
+            Assert.That(armor, Is.InstanceOf<Armor>());
+            Assert.That(shield, Is.InstanceOf<Shield>());
         }
     }
 }

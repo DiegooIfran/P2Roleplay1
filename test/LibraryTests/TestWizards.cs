@@ -35,10 +35,11 @@ public class TestWizards
         Armor itemDef = new Armor("Capa");
         wizard.AddMagicItem(itemAtt);
         wizard.AddItem(itemDef);
-        Assert.That(wizard.GetItems(), Does.Contain(itemAtt));
+        Assert.That(wizard.GetMagicItems(), Does.Contain(itemAtt));
         Assert.That(wizard.GetItems(), Does.Contain(itemDef));
         wizard.RemoveMagicItem(itemAtt);
         wizard.RemoveItem(itemDef);
+        Assert.That(wizard.GetMagicItems(), Is.Empty);
         Assert.That(wizard.GetItems(), Is.Empty);
     }
 
@@ -60,13 +61,13 @@ public class TestWizards
     public void TestAttackElf()
     {
         //Testeo el metodo para atacar Elfo
-        Wizards dwarf = new Wizards("Mago Eléctrico", 150);
-        Staff itemAtt = new Staff("Anillo Mágico");
+        Wizards wizard = new Wizards("Mago Eléctrico", 150);
+        Staff itemAtt = new Staff("Staff");
         Helmet itemDef = new Helmet("Squire's Helm");
-        dwarf.AddMagicItem(itemAtt);
-        dwarf.AddItem(itemDef);
+        wizard.AddMagicItem(itemAtt);
+        wizard.AddItem(itemDef);
         Elves elfTarget = new Elves("Legolas", 100);
-        dwarf.Attack(elfTarget);
+        wizard.Attack(elfTarget);
         Assert.That(elfTarget.GetHealth(), Is.Not.EqualTo(100));
     }
 

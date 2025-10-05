@@ -8,7 +8,7 @@ public class Staff : IMagicItem
     {
         get
         {
-            return 100;
+            return 60;
         } 
     }
     public string Name { get; set; }
@@ -17,11 +17,11 @@ public class Staff : IMagicItem
         this.Name = name;
     }
 
-    public int DefenseValue
+    public int Defense
     {
         get
         {
-            return 100;
+            return 20;
         }
     }
 }

@@ -2,6 +2,8 @@
 // Cada SpellBook se encarga solo de administrar sus hechizos (SRP)
 public class SpellBook : IMagicItem
 {
+    public int Attack { get; }
+    public int Defense { get; }
     public List<Spell> Spells { get; private set; }
     public string Name { get; set; }
     // Constructor: inicializa la lista vacía para que el SpellBook siempre tenga un estado válido
