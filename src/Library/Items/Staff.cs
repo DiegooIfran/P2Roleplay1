@@ -2,7 +2,7 @@ using Library;
 
 namespace Ucu.Poo.RoleplayGame;
 
-public class Staff : IMagicItem
+public class Staff : IMagicItem, IAttackItem, IDefenseItem
 {
     public int Attack
     {
