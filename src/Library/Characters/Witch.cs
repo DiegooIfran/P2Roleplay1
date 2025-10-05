@@ -40,6 +40,13 @@ public class Witch: IMagicCharacter
                 attack += attackItem.Attack;
             }
         }
+        foreach (IMagicItem objeto in _magicItems)
+        {
+            if (objeto is IAttackItem attackItem)
+            {
+                attack += attackItem.Attack;
+            }
+        }
         // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
