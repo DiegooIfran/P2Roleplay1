@@ -16,7 +16,6 @@ public class Dwarf : ICharacter
         this.BaseHealth = baseHealth;
         //La variable BaseHealth se usara para restaurar la vida en otro momento
     }
-    
 
     public void AddItem(IItem objeto)
     {
