@@ -2,26 +2,24 @@ using Library;
 
 namespace Ucu.Poo.RoleplayGame;
 
-public class Staff : IMagicItem, IAttackItem, IDefenseItem
+public class Staff : IMagicItem, IDefenseItem, IAttackItem
 {
-    public int Attack
-    {
-        get
-        {
-            return 60;
-        } 
-    }
     public string Name { get; set; }
     public Staff(string name)
     {
         this.Name = name;
     }
-
-    public int Defense
+    public int Attack
     {
         get
         {
-            return 20;
-        }
+            return 30;
+        } 
+    }
+    public int Defense {
+        get
+        {
+            return 10;
+        } 
     }
 }
