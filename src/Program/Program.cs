@@ -1,4 +1,5 @@
 ﻿using Library;
+using Library.Characters;
 
 internal class Program
 {

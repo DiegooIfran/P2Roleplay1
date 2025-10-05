@@ -1,5 +1,6 @@
 namespace Library.Characters;
-public class Wizards : IMagicCharacter
+
+public class Witch: IMagicCharacter
 {
     public string Name { get; }
     private List<IItem> _items = new List<IItem>();
@@ -8,7 +9,7 @@ public class Wizards : IMagicCharacter
     public int BaseHealth {get;}
     public int Health { set; get; }
 
-    public Wizards(string name, int baseHealth)
+    public Witch(string name, int baseHealth)
     {
         this.Name = name;
         this.Health = baseHealth;
