@@ -1,5 +1,10 @@
 ﻿namespace Library;
 
+// Lo definimos como clase propia porque encapsula la información
+// y la lógica de un hechizo
+
+// Esta decisión permite reutilizar los hechizos en distintos SpellBooks
+// sin duplicar datos
 public class Spell 
 { 
     // Usamos propiedades inmutables (private set) para proteger la información del hechizo

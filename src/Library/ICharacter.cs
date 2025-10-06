@@ -1,5 +1,6 @@
 namespace Library;
-
+// La usamos para definir los métodos y propiedades mínimas
+// que cualquier personaje debe tener
 public interface ICharacter
 {
     string Name { get; }

@@ -1,4 +1,12 @@
 namespace Library.Characters;
+
+// A diferencia de otros personajes,
+//Wizard implementa IMagicCharacter y contiene un SpellBook
+
+// Usamos SpellBook como clase auxiliar para separar la responsabilidad
+// de gestionar hechizos, manteniendo el principio SRP
+// Esto también facilita la reutilización; otras clases mágicas como Witch
+// pueden usar la misma lógica sin duplicar código
 public class Wizard : IMagicCharacter
 {
     public string Name { get; }

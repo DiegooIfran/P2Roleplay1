@@ -1,4 +1,9 @@
-﻿namespace Library;
+﻿// Creamos esta clase para encapsular la lógica de agregar, quitar y manejar hechizos
+// De esta forma, la clase Wizard mantiene su responsabilidad clara
+// y no se sobrecarga con la lógica de manejo de hechizos
+// Además facilita la reutilización, porque otros personajes mágicos como Witch
+// también pueden usar SpellBook sin duplicar código
+namespace Library;
 // Cada SpellBook se encarga solo de administrar sus hechizos (SRP)
 public class SpellBook
 {

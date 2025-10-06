@@ -1,5 +1,11 @@
 namespace Library.Characters;
 
+// La separamos en su propia clase para distinguirla de Wizard
+// y permitir que tenga características diferentes en el futuro,
+// como otro tipo de hechizos
+
+// Implementa IMagicCharacter, lo que asegura que cumpla con el contrato
+// de cualquier personaje mágico
 public class Witch: IMagicCharacter
 {
     public string Name { get; }
