@@ -13,5 +13,8 @@ public abstract class Hero : Character
             target.Health = target.Health - (this.GetAttack() - target.GetDefense());
         }
     }
-    
+    protected Hero(string name, int health) : base(name, health)
+    {
+        VictoryPoints = 0;
+    }
 }
