@@ -10,11 +10,11 @@ public class EnemyTeam : ITeam<Enemy>
         this.Name = name;
     }
 
-    public void AddToTeam(Character character)
+    public void AddToTeam(Enemy character)
     {
         this._team.Add(character);
     }
-    public void RemoveTeam(Character character)
+    public void RemoveTeam(Enemy character)
     {
         this._team.Remove(character);
     }

@@ -10,11 +10,11 @@ public class HeroTeam : ITeam<Hero>
         this.Name = name;
     }
 
-    public void AddToTeam(Character character)
+    public void AddToTeam(Hero character)
     {
         this._team.Add(character);
     }
-    public void RemoveFromTeam(Character character)
+    public void RemoveFromTeam(Hero character)
     {
         this._team.Remove(character);
     }
