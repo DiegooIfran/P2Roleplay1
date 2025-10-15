@@ -1,8 +1,8 @@
 namespace Library.Characters.Enemies;
 
-public class Demon: Enemy, IMagicCharacter 
+public class Demon: Enemy, IMagicCharacter
 {
-    private List<IMagicItem> _magicItems = new List<IMagicItem>()
+    private List<IMagicItem> _magicItems = new List<IMagicItem>();
     public Demon(string name, int health, int victoryPoints) : base(name, health, victoryPoints)
     {
     }
