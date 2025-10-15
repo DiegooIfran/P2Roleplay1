@@ -1,3 +1,5 @@
+using Library.Characters.Heroes;
+
 namespace Library.Characters;
 
 public abstract class Enemy : Character
