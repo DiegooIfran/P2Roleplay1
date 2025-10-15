@@ -1,4 +1,6 @@
 namespace Library.Encounter;
+using Library.Characters.Heroes;
+using Library.Characters;
 
 public static class Encounter
 {
@@ -6,27 +8,27 @@ public static class Encounter
     {
         List<Hero> heroTeam = heroes.GetTeam();
         List<Enemy> enemyTeam = enemies.GetTeam();
-        while(enemyTeam.Length() != 0 && heroTeam.Length() != 0)
+        while(enemyTeam.Count != 0 && heroTeam.Count() != 0)
         {
-            if (heroTeam.Length() == enemyTeam.Length())
+            if (heroTeam.Count() == enemyTeam.Count())
             {
-                for (int i = 0; i < heroTeam.Length(); i++)
+                for (int i = 0; i < heroTeam.Count(); i++)
                 {
                     enemyTeam[i].Attack(heroTeam[i]);
                 }
             }
-            else if (heroTeam.Length() == 1)
+            else if (heroTeam.Count() == 1)
             {
                 foreach (Enemy enemy in enemyTeam)
                 {
                     enemy.Attack(heroTeam[0]);
                 }
             }
-            else if (heroTeam.Length() < enemyTeam.Length())
+            else if (heroTeam.Count() < enemyTeam.Count())
             {
-                for (int aux = 0; aux < enemyTeam.Length(); aux++)
+                for (int aux = 0; aux < enemyTeam.Count(); aux++)
                 {
-                    for (int i = 0; i < heroTeam.Length(); i++)
+                    for (int i = 0; i < heroTeam.Count(); i++)
                     {
                         enemyTeam[aux].Attack(heroTeam[i]);
                     }
@@ -37,10 +39,10 @@ public static class Encounter
             {
                 foreach (Enemy enemy in enemyTeam)
                 {
-                    hero.Attach(enemy);
+                    hero.Attack(enemy);
                     if (enemy.GetHealth() == 0)
                     {
-                        hero.VP += enemy.VP;
+                        hero.VictoryPoints += enemy.VictoryPoints;
                     }
                 }
             }
@@ -48,10 +50,10 @@ public static class Encounter
 
         foreach (Hero hero in heroTeam)
         {
-            if (hero.VP >= 5 && hero.GetHealth() > 0)
+            if (hero.VictoryPoints >= 5 && hero.GetHealth() > 0)
             {
                 hero.Heal();
-                hero.VP = 0;
+                hero.VictoryPoints = 0;
             }
         }
     }

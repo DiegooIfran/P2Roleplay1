@@ -1,5 +1,5 @@
 namespace Library.Encounter;
-
+using Library.Characters;
 public class EnemyTeam : ITeam<Enemy>
 {
     public string Name { get; }
