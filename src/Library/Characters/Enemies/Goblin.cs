@@ -1,3 +1,5 @@
+using Library.Characters;
+
 namespace Library;
 
 // Creamos esta clase separada porque cada tipo de personaje
