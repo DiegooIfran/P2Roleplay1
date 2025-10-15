@@ -1,4 +1,4 @@
-namespace Library.Characters.Enemies;
+namespace Library.Characters;
 
 public abstract class Enemy : Character
 {
@@ -11,5 +11,9 @@ public abstract class Enemy : Character
             target.Health = target.Health - (this.GetAttack() - target.GetDefense());
         }
     }
-    
+
+    protected Enemy(string name, int health) : base(name, health)
+    {
+        VictoryPoints = VictoryPoints;
+    }
 }
