@@ -4,7 +4,6 @@ public class Wizard : IMagicCharacter
     public string Name { get; }
     private List<IItem> _items = new List<IItem>();
     private List<IMagicItem> _magicItems = new List<IMagicItem>();
-    public SpellBook SpellBook;
     public int BaseHealth {get;}
     public int Health { set; get; }
 
@@ -85,11 +84,7 @@ public class Wizard : IMagicCharacter
             target.Health = target.Health - (this.GetAttack() - target.GetDefense());
         }
     }
-
-    public void AddSpellBook(SpellBook libro)
-    {
-        this.SpellBook= libro;
-    }
+    
 
     public void AddMagicItem(IMagicItem magicItem)
     {
