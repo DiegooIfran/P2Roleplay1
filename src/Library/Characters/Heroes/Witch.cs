@@ -48,7 +48,7 @@ public class Witch: IMagicCharacter
         }
         foreach (IMagicItem objeto in _magicItems)
         {
-            if (objeto is IAttackItem attackItem)
+            if (objeto is IMagicAttackItem attackItem)
             {
                 attack += attackItem.Attack;
             }
@@ -69,7 +69,7 @@ public class Witch: IMagicCharacter
         }
 
         foreach (IMagicItem objeto in _magicItems)
-            if (objeto is IDefenseItem defenseItem)
+            if (objeto is IMagicDefenceItem defenseItem)
             {
                 defense += defenseItem.Defense;
             }
