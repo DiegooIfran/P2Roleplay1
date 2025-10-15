@@ -14,8 +14,9 @@ public abstract class Enemy : Character
         }
     }
 
-    protected Enemy(string name, int health) : base(name, health)
+    protected Enemy(string name, int health, int victoryPoints) : base(name, health)
     {
-        VictoryPoints = VictoryPoints;
+        VictoryPoints = victoryPoints;
+        
     }
 }
