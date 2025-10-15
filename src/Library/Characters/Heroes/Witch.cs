@@ -94,11 +94,7 @@ public class Witch: IMagicCharacter
             target.Health = target.Health - (this.GetAttack() - target.GetDefense());
         }
     }
-
-    public void AddSpellBook(SpellBook libro)
-    {
-        this.SpellBook= libro;
-    }
+    
 
     public void AddMagicItem(IMagicItem magicItem)
     {
