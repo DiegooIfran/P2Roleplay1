@@ -9,12 +9,8 @@ namespace Library;
 public class Goblin: Enemy
 {
     public Goblin(string name, int health, int vp) //Constructor de goblin
+        : base(name,health,vp)
     {
-        Name = name;
-        BaseHealth = health; //La variable MaxHealth se usara para restaurar la vida en otro momento
-        Health = health;
-        Vp = vp;
-        InTeam = false;
-    }
 
+    }
 }
