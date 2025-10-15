@@ -6,22 +6,22 @@ public abstract class Character
     public string Name { get; }
     public int Health { get; set; }
     public int BaseHealth { get; }
-    private List<IItem> Items = new List<IItem>();
+    protected List<IItem> _items = new List<IItem>();
     public bool InTeam { get; set; }
 
-    public Character(string name, int health)
+    protected Character(string name, int health)
     {
         this.Name = name;
         this.BaseHealth = health;
         this.Health = health;
-        this.Items = new List<IItem>();
+        this._items = new List<IItem>();
         this.InTeam = false;
     }
-    
+
     public virtual int GetAttack()
     {
         int attack = 0;
-        foreach (IItem objeto in Items)
+        foreach (IItem objeto in _items)
         {
             if (objeto is IAttackItem attackItem)
             {
@@ -35,7 +35,7 @@ public abstract class Character
     public virtual int GetDefense()
     {
         int defense = 0;
-        foreach (IItem objeto in Items)
+        foreach (IItem objeto in _items)
         {
             if (objeto is IDefenseItem defenseItem)
             {
@@ -49,7 +49,7 @@ public abstract class Character
     
     public List<IItem> GetItems()
     {
-        return Items;
+        return _items;
     }
     
     public int GetHealth() //Devuelve la vida actual
@@ -64,11 +64,11 @@ public abstract class Character
     
     public void AddItem(IItem item) //Añade un item
     {
-        Items.Add(item);
+        _items.Add(item);
     }
 
     public void RemoveItem(IItem item) //Quita un item
     {
-        Items.Remove(item);
+        _items.Remove(item);
     }
 }

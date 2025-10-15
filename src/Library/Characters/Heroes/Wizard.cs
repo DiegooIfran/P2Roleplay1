@@ -7,36 +7,26 @@ namespace Library.Characters;
 // de gestionar hechizos, manteniendo el principio SRP
 // Esto también facilita la reutilización; otras clases mágicas como Witch
 // pueden usar la misma lógica sin duplicar código
-public class Wizard : IMagicCharacter, Character
+public class Wizard : Hero, IMagicCharacter
 {
-    public string Name { get; }
-    private List<IItem> _items = new List<IItem>();
-    private List<IMagicItem> _magicItems = new List<IMagicItem>();
-    public int BaseHealth {get;}
-    public int Health { set; get; }
+    private List<IMagicItem> _magicItems= new List<IMagicItem>();
 
-    public Wizard(string name, int baseHealth)
+    public Wizard(string name, int health) : base(name, health)
     {
-        this.Name = name;
-        this.Health = baseHealth;
-        this.BaseHealth = baseHealth;
     }
 
-    public void AddItem(IItem objeto)
+    public void AddMagicItem(IMagicItem magicItem)
     {
-        _items.Add(objeto);
+        this._magicItems.Add(magicItem);;
     }
 
-    public void RemoveItem(IItem objeto)
+    public void RemoveMagicItem(IMagicItem magicItem)
     {
-        _items.Remove(objeto);
-    }
-    public List<IItem> GetItems()
-    {
-        return _items;
+        this._magicItems.Remove(magicItem);;
     }
 
-    public int GetAttack()
+
+    public override int  GetAttack()
     {
         int attack = 0;
         foreach (IItem objeto in _items)
@@ -55,7 +45,7 @@ public class Wizard : IMagicCharacter, Character
         return attack;
     }
 
-    public int GetDefense()
+    public override int GetDefense()
     {
         int defense = 0;
         foreach (IItem objeto in _items)
@@ -83,25 +73,6 @@ public class Wizard : IMagicCharacter, Character
     public void Heal()
     {
         this.Health = this.BaseHealth;
-    }
-
-    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del mago
-    {
-        if ((this.GetAttack() - target.GetDefense()) >= 0) //Para checkear que el daño sea un numero positivo
-        {
-            target.Health = target.Health - (this.GetAttack() - target.GetDefense());
-        }
-    }
-    
-
-    public void AddMagicItem(IMagicItem magicItem)
-    {
-        this._magicItems.Add(magicItem);
-    }
-
-    public void RemoveMagicItem(IMagicItem magicItem)
-    {
-        this._magicItems.Remove(magicItem);
     }
 
     public List<IMagicItem> GetMagicItems()
