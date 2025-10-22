@@ -12,11 +12,27 @@ public class EnemyTeam : ITeam<Enemy>
 
     public void AddToTeam(Enemy character)
     {
-        this._team.Add(character);
+        if (character.InTeam == false)
+        {
+            this._team.Add(character);    
+        }
+        else
+        {
+            Console.WriteLine("Este enemigo ya esta en un equipo");
+        }
+        
     }
-    public void RemoveTeam(Enemy character)
+    public void RemoveFromTeam(Enemy character)
     {
-        this._team.Remove(character);
+        
+        if (character.InTeam != false)
+        {
+            this._team.Remove(character);    
+        }
+        else
+        {
+            Console.WriteLine("Este enemigo no esta en un equipo");
+        }
     }
 
     public List<Enemy> GetTeam()

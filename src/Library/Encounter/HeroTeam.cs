@@ -12,11 +12,27 @@ public class HeroTeam : ITeam<Hero>
 
     public void AddToTeam(Hero character)
     {
-        this._team.Add(character);
+        if (character.InTeam == false)
+        {
+            this._team.Add(character);    
+        }
+        else
+        {
+            Console.WriteLine("Este heroe ya esta en un equipo");
+        }
+        
     }
     public void RemoveFromTeam(Hero character)
     {
-        this._team.Remove(character);
+        
+        if (character.InTeam != false)
+        {
+            this._team.Remove(character);    
+        }
+        else
+        {
+            Console.WriteLine("Este heroe no esta en un equipo");
+        }
     }
 
     public List<Hero> GetTeam()
