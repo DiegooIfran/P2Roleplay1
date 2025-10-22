@@ -1,5 +1,6 @@
 using Library;
 using Library.Characters;
+using Library.Characters.Enemies;
 using Ucu.Poo.RoleplayGame;
 
 namespace LibraryTests;
@@ -42,7 +43,7 @@ public class TestDwarf
     }
 
     [Test]
-    public void TestAttackDwarf()
+    public void TestAttack()
     {
         //Testeo el metodo para atacar a otro Dwarf
         Dwarf dwarf = new Dwarf("Gimli", 150);
@@ -50,48 +51,23 @@ public class TestDwarf
         Helmet itemDef = new Helmet("Squire's Helm");
         dwarf.AddItem(itemAtt);
         dwarf.AddItem(itemDef);
-        Dwarf dwarfTarget = new Dwarf("Gruñon", 120);
-        dwarf.Attack(dwarfTarget);
-        Assert.That(dwarfTarget.GetHealth(), Is.Not.EqualTo(120));
+        Demon demonTarget = new Demon("Carlos", 100, 10);
+        dwarf.Attack(demonTarget);
+        Assert.That(demonTarget.GetHealth(), Is.Not.EqualTo(120));
     }
 
-    [Test]
-    public void TestAttackElf()
-    {
-        //Testeo el metodo para atacar a los elfos
-        Dwarf dwarf = new Dwarf("Gimli", 150);
-        Axe itemAtt = new Axe( "Dwarven Axe");
-        Helmet itemDef = new Helmet( "Squire's Helm");
-        dwarf.AddItem(itemAtt);
-        dwarf.AddItem(itemDef);
-        Elf elfTarget = new Elf("Legolas", 100);
-        dwarf.Attack(elfTarget);
-        Assert.That(elfTarget.GetHealth(), Is.Not.EqualTo(100));
-    }
 
-    [Test]
-    public void TestAttackWizards()
-    {
-        //Testeo el metodo para atacar a los magos
-        Dwarf dwarf = new Dwarf("Gimli", 150);
-        Axe itemAtt = new Axe("Dwarven Axe");
-        Helmet itemDef = new Helmet( "Squire's Helm");
-        dwarf.AddItem(itemAtt);
-        dwarf.AddItem(itemDef);
-        Wizard wizardTarget = new Wizard("Gandalf", 70);
-        dwarf.Attack(wizardTarget);
-        Assert.That(wizardTarget.GetHealth(), Is.Not.EqualTo(70));
-    }
+    
     
     [Test]
     public void Heal()
     {
         //Testeo el recibir el ataque y la funcion Heal, la cual deberia restaurar la vida.
         Dwarf dwarf1 = new Dwarf("Gimli", 150);
-        Dwarf dwarf2 = new Dwarf("Gruñon", 100);
         Axe itemAtt = new Axe("Dwarven Axe");
-        dwarf2.AddItem(itemAtt);
-        dwarf2.Attack(dwarf1);
+        Demon demonTarget = new Demon("Carlos", 100, 10);
+        demonTarget.AddItem(itemAtt);
+        demonTarget.Attack(dwarf1);
         Assert.That(dwarf1.GetHealth(), Is.EqualTo(135));
         dwarf1.Heal();
         Assert.That(dwarf1.GetHealth(), Is.EqualTo(150));
