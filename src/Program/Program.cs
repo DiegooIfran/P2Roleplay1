@@ -1,5 +1,6 @@
 ﻿using Library;
 using Library.Characters;
+using Library.Characters.Enemies;
 using Ucu.Poo.RoleplayGame;
 
 namespace Program;
@@ -49,19 +50,21 @@ internal static class Program
         Witch brujaNocturna = new Witch("Bruja Nocturna", 90);
         Wizard magoHielo = new Wizard("Mago de Hielo", 80);
         Elf arwen = new Elf("Arwen", 180);
-
+        Demon demon = new Demon("Juan",90,2);
+        
         Helmet helmet = new Helmet("Super Casco");
         gloin.AddItem(helmet);
 
         Staff staff = new Staff("Magic Staff");
         brujaNocturna.AddMagicItem(staff);
         
-        brujaNocturna.Attack(gloin);
+        
+        brujaNocturna.Attack(demon);
         
         Spell iceBall = new Spell("IceBall", 10);
         SpellBook spellBook = new SpellBook();
         spellBook.AddSpell(iceBall);
-        magoHielo.AddSpellBook(spellBook);
+        magoHielo.AddMagicItem(spellBook);
 
         Bow arcoEncantado = new Bow("Arco Encantado");
         arwen.AddItem(arcoEncantado);
