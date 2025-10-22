@@ -19,7 +19,7 @@ public class Witch: Hero, IMagicCharacter
     public override int GetAttack()
     {
         int attack = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             if (objeto is IAttackItem attackItem)
             {
@@ -40,7 +40,7 @@ public class Witch: Hero, IMagicCharacter
     public override int GetDefense()
     {
         int defense = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             if (objeto is IDefenseItem defenseItem)
             {

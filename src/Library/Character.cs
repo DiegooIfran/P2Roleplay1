@@ -6,7 +6,7 @@ public abstract class Character
     public string Name { get; }
     public int Health { get; set; }
     public int BaseHealth { get; }
-    private List<IItem> Items = new List<IItem>();
+    private protected List<IItem> Items = new List<IItem>();
     public bool InTeam { get; set; }
 
     protected Character(string name, int health)

@@ -12,29 +12,13 @@ namespace Library.Characters;
 public class Wizard : Hero, IMagicCharacter
 {
     private List<IMagicItem> _magicItems = new List<IMagicItem>();
-    public int BaseHealth {get;}
-    public int Health { set; get; }
-
-   
-
-    public void AddItem(IItem objeto)
+    public Wizard(string name, int health) : base(name, health)
     {
-        _items.Add(objeto);
     }
-
-    public void RemoveItem(IItem objeto)
-    {
-        _items.Remove(objeto);
-    }
-    public List<IItem> GetItems()
-    {
-        return _items;
-    }
-
-    public int GetAttack()
+    public override int GetAttack()
     {
         int attack = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             if (objeto is IAttackItem attackItem)
             {
@@ -50,10 +34,10 @@ public class Wizard : Hero, IMagicCharacter
         return attack;
     }
 
-    public int GetDefense()
+    public override int GetDefense()
     {
         int defense = 0;
-        foreach (IItem objeto in _items)
+        foreach (IItem objeto in Items)
         {
             if (objeto is IDefenseItem defenseItem)
             {
@@ -66,29 +50,10 @@ public class Wizard : Hero, IMagicCharacter
             {
                 defense += defenseItem.Defense;
             }
-    // Recorre los items que tiene el personaje sumando las defensas de cada uno
+        // Recorre los items que tiene el personaje sumando las defensas de cada uno
 
-    return defense;
+        return defense;
     }
-
-    public int GetHealth()
-    {
-        return this.Health;
-    }
-    public void Heal()
-    {
-        this.Health = this.BaseHealth;
-    }
-
-    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del mago
-    {
-        if ((this.GetAttack() - target.GetDefense()) >= 0) //Para checkear que el daño sea un numero positivo
-        {
-            target.Health = target.Health - (this.GetAttack() - target.GetDefense());
-        }
-    }
-    
-
     public void AddMagicItem(IMagicItem magicItem)
     {
         this._magicItems.Add(magicItem);
@@ -102,5 +67,5 @@ public class Wizard : Hero, IMagicCharacter
     public List<IMagicItem> GetMagicItems()
     {
         return this._magicItems;
-    } 
+    }
 }
