@@ -1,3 +1,5 @@
+using Library.Characters.Heroes;
+
 namespace Library.Characters;
 
 // La separamos en su propia clase para distinguirla de Wizard
@@ -6,37 +8,15 @@ namespace Library.Characters;
 
 // Implementa IMagicCharacter, lo que asegura que cumpla con el contrato
 // de cualquier personaje mágico
-public class Witch: IMagicCharacter
+public class Witch: Hero, IMagicCharacter
 {
-    public string Name { get; }
-    private List<IItem> _items = new List<IItem>();
     private List<IMagicItem> _magicItems = new List<IMagicItem>();
-    public SpellBook SpellBook;
-    public int BaseHealth {get;}
-    public int Health { set; get; }
-
-    public Witch(string name, int baseHealth)
+   
+    public Witch(string name, int health) : base(name, health)
     {
-        this.Name = name;
-        this.Health = baseHealth;
-        this.BaseHealth = baseHealth;
     }
 
-    public void AddItem(IItem objeto)
-    {
-        _items.Add(objeto);
-    }
-
-    public void RemoveItem(IItem objeto)
-    {
-        _items.Remove(objeto);
-    }
-    public List<IItem> GetItems()
-    {
-        return _items;
-    }
-
-    public int GetAttack()
+    public override int GetAttack()
     {
         int attack = 0;
         foreach (IItem objeto in _items)
@@ -57,7 +37,7 @@ public class Witch: IMagicCharacter
         return attack;
     }
     
-    public int GetDefense()
+    public override int GetDefense()
     {
         int defense = 0;
         foreach (IItem objeto in _items)
@@ -77,25 +57,6 @@ public class Witch: IMagicCharacter
 
         return defense;
     }
-
-    public int GetHealth()
-    {
-        return this.Health;
-    }
-    public void Heal()
-    {
-        this.Health = this.BaseHealth;
-    }
-
-    public void Attack(ICharacter target) //Ataca y le quita vida segun la defensa del objetivo y el ataque del mago
-    {
-        if ((this.GetAttack() - target.GetDefense()) >= 0) //Para checkear que el daño sea un numero positivo
-        {
-            target.Health = target.Health - (this.GetAttack() - target.GetDefense());
-        }
-    }
-    
-
     public void AddMagicItem(IMagicItem magicItem)
     {
         this._magicItems.Add(magicItem);

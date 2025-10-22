@@ -11,18 +11,11 @@ namespace Library.Characters;
 // pueden usar la misma lógica sin duplicar código
 public class Wizard : Hero, IMagicCharacter
 {
-    public string Name { get; }
-    private List<IItem> _items = new List<IItem>();
     private List<IMagicItem> _magicItems = new List<IMagicItem>();
     public int BaseHealth {get;}
     public int Health { set; get; }
 
-    public Wizard(string name, int baseHealth)
-    {
-        this.Name = name;
-        this.Health = baseHealth;
-        this.BaseHealth = baseHealth;
-    }
+   
 
     public void AddItem(IItem objeto)
     {
