@@ -9,7 +9,7 @@ public abstract class Character
     private List<IItem> Items = new List<IItem>();
     public bool InTeam { get; set; }
 
-    public Character(string name, int health)
+    protected Character(string name, int health)
     {
         this.Name = name;
         this.BaseHealth = health;
