@@ -7,18 +7,18 @@ namespace LibraryTests
         [Test]
         public void TestSpellStoresValues()
         {
-            // Justificación: comprueba que el constructor de Spell guarda correctamente sus valores
+            // Justificaciï¿½n: comprueba que el constructor de Spell guarda correctamente sus valores
             Spell spell = new Spell("Spell", 15);
             Assert.That(spell.Name, Is.EqualTo("Spell"));
-            Assert.That(spell.Damage, Is.EqualTo(15));
+            Assert.That(spell.GetPower(), Is.EqualTo(15));
         }
 
         [Test]
         public void TestGetDamage()
         {
-            // Justificación: verifica que el método GetDamage devuelva el valor esperado
+            // Justificaciï¿½n: verifica que el mï¿½todo GetDamage devuelva el valor esperado
             Spell spell = new Spell("Spell", 20);
-            Assert.That(spell.GetDamage(), Is.EqualTo(20));
+            Assert.That(spell.GetPower(), Is.EqualTo(20));
         }
     }
 }
