@@ -1,3 +1,5 @@
+using Library.Characters.Heroes;
+
 namespace Library.Characters;
 
 // A diferencia de otros personajes,
@@ -7,7 +9,7 @@ namespace Library.Characters;
 // de gestionar hechizos, manteniendo el principio SRP
 // Esto también facilita la reutilización; otras clases mágicas como Witch
 // pueden usar la misma lógica sin duplicar código
-public class Wizard : IMagicCharacter, Character
+public class Wizard : Hero, IMagicCharacter
 {
     public string Name { get; }
     private List<IItem> _items = new List<IItem>();

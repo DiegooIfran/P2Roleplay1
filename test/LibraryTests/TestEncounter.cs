@@ -77,7 +77,7 @@ public class TestEncounter
         enemy.AddItem(new Sword("Bone Sword"));
 
         HeroTeam heroTeam = new HeroTeam("Heroes");
-        heroTeam.AddToTeam(Hero);
+        heroTeam.AddToTeam(hero);
         EnemyTeam enemyTeam = new EnemyTeam("Enemies");
         enemyTeam.AddToTeam(enemy);
 

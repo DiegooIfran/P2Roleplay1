@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using Library.Characters.Heroes;
 
 namespace Library;
 
@@ -7,7 +8,7 @@ namespace Library;
 
 // podemos extender Dwarf con nuevas habilidades sin modificar
 // la lógica de otros personajes
-public class Dwarf : Character
+public class Dwarf : Hero
 {
     public Dwarf(string name, int health) : base(name,health)
     {

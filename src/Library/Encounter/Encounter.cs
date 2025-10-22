@@ -4,7 +4,7 @@ using Library.Characters;
 
 public static class Encounter
 {
-    static void DoEncounter(HeroTeam heroes, EnemyTeam enemies)
+    public static void DoEncounter(HeroTeam heroes, EnemyTeam enemies)
     {
         List<Hero> heroTeam = heroes.GetTeam();
         List<Enemy> enemyTeam = enemies.GetTeam();
