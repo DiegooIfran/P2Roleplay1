@@ -83,6 +83,29 @@ public class TestEncounter
 
         Encounter.DoEncounter(heroTeam, enemyTeam);
 
-        Assert.That(enemy.Health, Is.EqualTo(0));
+        Assert.That(enemy.Health, Is.LessThanOrEqualTo(0));
+    }
+
+    [Test]
+    public void TeamsTest()
+    {
+        Wizard hero = new Wizard("Gandalf", 100);
+        hero.AddItem(new Sword("Staff"));
+        Enemy enemy = new Skeleton("Bones", 1, 2);
+        enemy.AddItem(new Sword("Bone Sword"));
+
+        HeroTeam heroTeam = new HeroTeam("Heroes");
+        heroTeam.AddToTeam(hero);
+        EnemyTeam enemyTeam = new EnemyTeam("Enemies");
+        enemyTeam.AddToTeam(enemy);
+        
+        Assert.That(enemyTeam.Name, Is.EqualTo("Enemies"));
+        Assert.That(heroTeam.Name, Is.EqualTo("Heroes"));
+        
+        heroTeam.RemoveFromTeam(hero);
+        enemyTeam.RemoveFromTeam(enemy);
+
+        Assert.That(enemyTeam.GetTeam().Count(), Is.EqualTo(0));
+        Assert.That(heroTeam.GetTeam().Count(), Is.EqualTo(0));
     }
 }

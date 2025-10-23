@@ -7,6 +7,7 @@ public class HeroTeam : ITeam<Hero>
 
     public HeroTeam(string name)
     {
+        this._team = new List<Hero>();
         this.Name = name;
     }
 
@@ -15,6 +16,7 @@ public class HeroTeam : ITeam<Hero>
         if (character.InTeam == false)
         {
             this._team.Add(character);    
+            character.InTeam = true;
         }
         else
         {
@@ -27,7 +29,8 @@ public class HeroTeam : ITeam<Hero>
         
         if (character.InTeam != false)
         {
-            this._team.Remove(character);    
+            this._team.Remove(character);
+            character.InTeam = false;
         }
         else
         {

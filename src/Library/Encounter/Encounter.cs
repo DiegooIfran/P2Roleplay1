@@ -39,14 +39,22 @@ public static class Encounter
             {
                 foreach (Enemy enemy in enemyTeam)
                 {
-                    hero.Attack(enemy);
-                    if (enemy.GetHealth() == 0)
+                    if(enemy.GetHealth() > 0)
                     {
-                        hero.VictoryPoints += enemy.VictoryPoints;
+                        hero.Attack(enemy);
+                        if (enemy.GetHealth() <= 0)
+                        {
+                            hero.VictoryPoints += enemy.VictoryPoints;
+                        }
                     }
                 }
             }
+            
+            enemyTeam.RemoveAll(e => e.GetHealth() <= 0);
+            heroTeam.RemoveAll(h => h.GetHealth() <= 0);
         }
+
+        
 
         foreach (Hero hero in heroTeam)
         {

@@ -7,6 +7,7 @@ public class EnemyTeam : ITeam<Enemy>
 
     public EnemyTeam(string name)
     {
+        this._team = new List<Enemy>();
         this.Name = name;
     }
 
@@ -15,6 +16,7 @@ public class EnemyTeam : ITeam<Enemy>
         if (character.InTeam == false)
         {
             this._team.Add(character);    
+            character.InTeam = true;
         }
         else
         {
@@ -28,6 +30,7 @@ public class EnemyTeam : ITeam<Enemy>
         if (character.InTeam != false)
         {
             this._team.Remove(character);    
+            character.InTeam = false;
         }
         else
         {
