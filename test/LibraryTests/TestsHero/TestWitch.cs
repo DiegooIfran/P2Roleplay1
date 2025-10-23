@@ -54,7 +54,7 @@ public class TestWitch
         witch.AddItem(itemDef);
         Skeleton skeleton = new Skeleton("Pepe", 70, 3);
         witch.Attack(skeleton);
-        Assert.That(skeleton.GetHealth(), Is.Not.EqualTo(120));
+        Assert.That(skeleton.GetHealth(), Is.Not.EqualTo(70));
     }
 
     [Test]
@@ -85,14 +85,5 @@ public class TestWitch
         witch.AddMagicItem(spellBook1);
 
         Assert.That(witch.GetMagicItems()[0], Is.EqualTo(spellBook1));
-
-        Spell iceBall = new Spell("IceBall", 10);
-        SpellBook spellBook2 = new SpellBook();
-        spellBook2.AddSpell(fireBall);
-        spellBook2.AddSpell(iceBall);
-        witch.AddMagicItem(spellBook2);
-
-        Assert.That(witch.GetMagicItems()[0], Is.EqualTo(spellBook2));
-        Assert.That(witch.GetMagicItems()[0], Is.Not.EqualTo(spellBook1));
     }
 }

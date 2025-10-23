@@ -26,10 +26,12 @@ public class Wizard : Hero, IMagicCharacter
             }
         }
         foreach (IMagicItem objeto in _magicItems)
-            if (objeto is IAttackItem attackItem)
+        {
+            if (objeto is IMagicAttackItem attackItem)
             {
                 attack += attackItem.Attack;
             }
+        }
         // Recorre los items que tiene el personaje sumando los daños de cada uno
         return attack;
     }
@@ -46,7 +48,7 @@ public class Wizard : Hero, IMagicCharacter
         }
 
         foreach (IMagicItem objeto in _magicItems)
-            if (objeto is IDefenseItem defenseItem)
+            if (objeto is IMagicDefenceItem defenseItem)
             {
                 defense += defenseItem.Defense;
             }

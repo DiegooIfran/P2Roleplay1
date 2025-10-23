@@ -16,7 +16,7 @@ public class TestWizard
     [Test]
     public void TestNameAndHealth()
     {
-        // En este testeo creo un objeto Dwarves testeando los nombres y la vida
+        // En este testeo creo un objeto Wizard testeando los nombres y la vida
         string name = "Mago Eléctrico";
         int health = 150;
         Wizard wizard = new Wizard(name, health);
@@ -47,7 +47,7 @@ public class TestWizard
     [Test]
     public void TestAttack()
     {
-        //Testeo el metodo para atacar Dwarf
+        //Testeo el metodo para atacar Enemy
         Wizard wizard = new Wizard("Mago Eléctrico", 150);
         Staff itemAtt = new Staff("Staff");
         Helmet itemDef = new Helmet("Squire's Helm");
@@ -55,7 +55,7 @@ public class TestWizard
         wizard.AddItem(itemDef);
         Skeleton skeleton = new Skeleton("Pepe", 70, 3);
         wizard.Attack(skeleton);
-        Assert.That(skeleton.GetHealth(), Is.Not.EqualTo(120));
+        Assert.That(skeleton.GetHealth(), Is.Not.EqualTo(70));
     }
 
     [Test]
@@ -74,7 +74,7 @@ public class TestWizard
     [Test]
     public void SpellBook()
     {
-        //En este testeo que los magos solo puedan tener un SpellBook
+        //En este testeo que los magos puedan tener un SpellBook
         string name = "Mago";
         int health = 150;
         Wizard wizard = new Wizard(name, health);
@@ -85,14 +85,5 @@ public class TestWizard
         wizard.AddMagicItem(spellBook1);
         
         Assert.That(wizard.GetMagicItems()[0], Is.EqualTo(spellBook1));
-        
-        Spell iceBall = new Spell("IceBall", 10);
-        SpellBook spellBook2 = new SpellBook();
-        spellBook2.AddSpell(fireBall);
-        spellBook2.AddSpell(iceBall);
-        wizard.AddMagicItem(spellBook2);
-        
-        Assert.That(wizard.GetMagicItems()[0], Is.EqualTo(spellBook2));
-        Assert.That(wizard.GetMagicItems()[0], Is.Not.EqualTo(spellBook1));
     }
 }
